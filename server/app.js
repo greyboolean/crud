@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 // Load environment variables from .env file
 require("dotenv").config();
+const itemRouter = require("./src/routes/itemRouter");
 
 const app = express();
 
@@ -19,9 +20,7 @@ mongoose
 app.use(express.json());
 
 // Routes
-app.get("/", (req, res) => {
-	res.send("Hello, world!");
-});
+app.use("/api/v1/items", itemRouter);
 
 // Start the server
 const port = process.env.PORT || 3000;

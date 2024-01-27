@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 // Load environment variables from .env file
 require("dotenv").config();
 const itemRouter = require("./src/routes/itemRouter");
@@ -18,6 +19,7 @@ mongoose
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 // Routes
 app.use("/api/v1/items", itemRouter);

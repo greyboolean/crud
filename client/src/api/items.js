@@ -36,7 +36,7 @@ export const createItem = async (item) => {
 
 export const updateItem = async (id, item) => {
   try {
-    const { data: updatedItem } = await axios.put(`${BASE_URL}/items/${id}`, item);
+    const { data: updatedItem } = await axios.patch(`${BASE_URL}/items/${id}`, item);
     if (updatedItem.success) {
       return updatedItem.data;
     }
@@ -49,7 +49,7 @@ export const deleteItem = async (id) => {
   try {
     const { data: deletedItem } = await axios.delete(`${BASE_URL}/items/${id}`);
     if (deletedItem.success) {
-      return deletedItem.data;
+      return true;
     }
   } catch (error) {
     return false;
